@@ -103,7 +103,7 @@ router.delete('/:id', async (req, res) => {
 
   try {
 
-    let haveservice = await haveservice.findByIdAndDelete(req.params.id)
+    let haveservice = await Haveservice.findByIdAndDelete(req.params.id)
 
     if (haveservice === null) {
       return res.status(404).json({ message: "haveservice kunne ikke findes og rettets" })
