@@ -72,7 +72,7 @@ router.post('/', upload.single('image'), async (req, res) => {
 })
 
 //-------PUT--------
-router.put('/:id', upload.single('profileimage'), async (req, res) => {
+router.put('/:id', upload.single('image'), async (req, res) => {
 
   console.log("Haveservice GET", req.body)
 
@@ -80,10 +80,10 @@ router.put('/:id', upload.single('profileimage'), async (req, res) => {
 
     //Hvis der kommer en fil med i requestet = billedet skal rettet (og ellers ikke)
     if (req.file) {
-      req.body.profileimage = req.file.filename
+      req.body.image = req.file.filename
     }
 
-    let haveservice = await haveservice.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    let haveservice = await Haveservice.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true })
     if (haveservice === null) {
       return res.status(404).json({ message: "haveservice kunne ikke findes og rettets" })
     }
