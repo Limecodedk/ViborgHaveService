@@ -43,7 +43,7 @@ router.get('/:id', async (req, res) => {
   console.log('haveservice GET BY ID')
 
   try {
-    let haveservice = await haveservice.findById(req.params.id)
+    let haveservice = await Haveservice.findById(req.params.id)
     return res.status(200).json({ Records: haveservice })
   } catch (error) {
 
